@@ -1,0 +1,5 @@
+import matplotlib.pyplot as plt
+
+df.groupby("Company")["Revenue"].sum().plot(kind="bar")
+plt.title("Company Revenue Comparison")
+plt.show()
