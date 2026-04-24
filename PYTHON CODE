@@ -1,0 +1,27 @@
+import pandas as pd
+
+# Load data
+df = pd.read_csv("company_data.csv")
+
+# Show data
+print("\nDataset:\n", df)
+
+# Total revenue by company
+print("\nTotal Revenue by Company:")
+print(df.groupby("Company")["Revenue"].sum())
+
+# Average profit
+print("\nAverage Profit:")
+print(df["Profit"].mean())
+
+# Highest revenue company
+top_company = df.loc[df["Revenue"].idxmax()]
+print("\nTop Company:", top_company["Company"], top_company["Revenue"])
+
+# Year-wise growth
+print("\nYear-wise Revenue:")
+print(df.groupby("Year")["Revenue"].sum())
+
+# Profit margin
+df["Profit_Margin"] = df["Profit"] / df["Revenue"] * 100
+print("\nProfit Margins:\n", df[["Company", "Profit_Margin"]])
